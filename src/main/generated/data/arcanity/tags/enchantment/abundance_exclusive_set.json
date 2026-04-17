@@ -1,0 +1,10 @@
+{
+  "values": [
+    {
+      "id": "#minecraft:exclusive_set/mining",
+      "required": false
+    },
+    "arcanity:abundance",
+    "minecraft:looting"
+  ]
+}

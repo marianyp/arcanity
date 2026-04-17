@@ -1,0 +1,7 @@
+// 1.21.10	-999999999-01-01T00:00:00	Arcanity/Model Definitions
+e69b3c8eedd3a1d103b8da0d49d1672f3e062ad6 assets/arcanity/blockstates/arcane_table.json
+b1d749b6b659cb84e17281239625e706935de973 assets/arcanity/items/arcane_table.json
+690e17c68a92df6f5551d60a8f2f37e93214aed4 assets/arcanity/items/arcane_tool.json
+4cce2222c560412bb9aee37df2142a9dc76c10e9 assets/arcanity/models/block/arcane_table.json
+181dd02dad3e7fb4502765423d4c11ca09e907b5 assets/arcanity/models/item/arcane_tool.json
+8a5fa9d40fe84b5a1b30c5b05be750d09a53ec03 assets/arcanity/models/item/arcane_tool_broken.json

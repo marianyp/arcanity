@@ -1,0 +1,7 @@
+// 1.21.10	-999999999-01-01T00:00:00	Arcanity/Tags for minecraft:enchantment
+767e878510bb0df9c40ec95b00696db65a2c28fd data/arcanity/tags/enchantment/abundance.json
+97035f439396fa2e8f561304e95acf9df2ae1a92 data/arcanity/tags/enchantment/abundance_exclusive_set.json
+4ff7fb064aada31680c386c74365853d22ca4d79 data/arcanity/tags/enchantment/blaze_exclusive_set.json
+93b20dcb134b19952444c0907935f9f78a41dbe6 data/arcanity/tags/enchantment/multi_mining_exclusive_set.json
+6cf14df08cbf7088d865d9b2f06b71a36b1258fd data/arcanity/tags/enchantment/multi_tool_incompatible.json
+d18d96578c1cde363d3f351d04d8962655700835 data/minecraft/tags/enchantment/smelts_loot.json

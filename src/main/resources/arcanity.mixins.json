@@ -1,0 +1,30 @@
+{
+	"required": true,
+	"package": "dev.mariany.arcanity.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"AnvilScreenHandlerMixin",
+		"BlockMixin",
+		"EnchantmentHelperMixin",
+		"EntityMixin",
+		"ExperienceOrbEntityMixin",
+		"GrindstoneScreenHandlerMixin",
+		"ItemEnchantmentsComponentMixin",
+		"ItemEntityMixin",
+		"ItemStackMixin",
+		"ServerPlayerInteractionManagerMixin",
+		"VillagerEntityMixin",
+		"accessor.ForgingScreenHandlerAccessor"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	},
+	"client": [
+		"HandledScreenMixin",
+		"MouseTweaksMainMixin",
+		"WorldRendererMixin"
+	]
+}

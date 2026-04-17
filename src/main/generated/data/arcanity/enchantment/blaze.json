@@ -1,0 +1,40 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.arcanity.blaze"
+  },
+  "effects": {
+    "arcanity:smelt_drops": {},
+    "minecraft:post_attack": [
+      {
+        "affected": "victim",
+        "effect": {
+          "type": "minecraft:ignite",
+          "duration": 8.0
+        },
+        "enchanted": "attacker",
+        "requirements": {
+          "condition": "minecraft:damage_source_properties",
+          "predicate": {
+            "is_direct": true
+          }
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#arcanity:blaze_exclusive_set",
+  "max_cost": {
+    "base": 80,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 30,
+    "per_level_above_first": 0
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#arcanity:multi_tool",
+  "weight": 2
+}

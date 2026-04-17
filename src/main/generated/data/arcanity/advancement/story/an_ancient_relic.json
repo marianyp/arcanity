@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "arcane_tool": {
+      "conditions": {
+        "items": [
+          {
+            "items": "arcanity:arcane_tool"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.arcanity.story.an_ancient_relic.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "arcanity:arcane_tool"
+    },
+    "title": {
+      "translate": "advancements.arcanity.story.an_ancient_relic.title"
+    }
+  },
+  "requirements": [
+    [
+      "arcane_tool"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

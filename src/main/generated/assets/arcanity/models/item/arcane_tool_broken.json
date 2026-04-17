@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "arcanity:item/arcane_tool_broken"
+  }
+}

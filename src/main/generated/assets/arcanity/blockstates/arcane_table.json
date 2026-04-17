@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "arcanity:block/arcane_table"
+    }
+  }
+}

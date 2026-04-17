@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "arcanity:block/arcane_table_bottom",
+    "side": "arcanity:block/arcane_table_side",
+    "top": "arcanity:block/arcane_table_top"
+  }
+}

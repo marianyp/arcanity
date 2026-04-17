@@ -1,0 +1,28 @@
+{
+	"schemaVersion": 1,
+	"id": "${mod_id}",
+	"version": "${mod_version}",
+	"name": "${mod_name}",
+	"description": "${mod_description}",
+	"authors": ["${mod_authors}"],
+	"contact": {
+		"homepage": "${mod_page_url}",
+		"sources": "${mod_git_url}"
+	},
+	"license": "${mod_license}",
+	"icon": "assets/arcanity/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["dev.mariany.arcanity.Arcanity"],
+		"client": ["dev.mariany.arcanity.client.ArcanityClient"],
+		"fabric-datagen": ["dev.mariany.arcanity.ArcanityDataGenerator"]
+	},
+	"mixins": ["arcanity.mixins.json"],
+	"accessWidener": "arcanity.accesswidener",
+	"depends": {
+		"fabricloader": ">=0.18.1",
+		"minecraft": ">=1.21.9",
+		"java": ">=21",
+		"fabric-api": ">=0.138.3"
+	}
+}

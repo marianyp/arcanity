@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "arcanity:arcane_table",
+    "minecraft:crafting_table"
+  ],
+  "result": {
+    "count": 2,
+    "id": "arcanity:arcane_table"
+  }
+}

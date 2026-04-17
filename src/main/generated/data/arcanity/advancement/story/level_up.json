@@ -1,0 +1,26 @@
+{
+  "parent": "arcanity:story/an_ancient_relic",
+  "criteria": {
+    "leveled_up": {
+      "trigger": "arcanity:leveled_up"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.arcanity.story.level_up.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "arcanity:arcane_table"
+    },
+    "title": {
+      "translate": "advancements.arcanity.story.level_up.title"
+    }
+  },
+  "requirements": [
+    [
+      "leveled_up"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

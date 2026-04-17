@@ -1,0 +1,17 @@
+{
+  "entity.villager.cast_spell": {
+    "subtitle": "subtitles.arcanity.entity.villager.cast_spell",
+    "sounds": [
+      {
+        "name": "mob/evocation_illager/cast1",
+        "pitch": 0.8,
+        "volume": 0.5
+      },
+      {
+        "name": "mob/evocation_illager/cast2",
+        "pitch": 0.8,
+        "volume": 0.5
+      }
+    ]
+  }
+}
