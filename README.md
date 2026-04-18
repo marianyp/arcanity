@@ -22,6 +22,10 @@ The Arcane Tool is a new tool that functions as a weapon, shovel, pickaxe, and a
 
 Right-clicking with the Arcane Tool allows you to strip wood, scrape oxidized blocks, and till farmland. Alternatively, you can create path blocks by shift-right-clicking on dirt blocks.
 
+### Obtaining
+
+The Arcane Tool cannot be crafted. Instead, you must give an unenchanted [Netherite](https://minecraft.wiki/w/Netherite) tool to a [Cleric](https://minecraft.wiki/w/Cleric) villager with a level of Apprentice or higher. After throwing the [Netherite](https://minecraft.wiki/w/Netherite) tool on the ground, the [Cleric](https://minecraft.wiki/w/Cleric) will convert it into an Arcane Tool. Alternatively, the Arcane Tool can also be found in End cities. 
+
 ## 📙 Enchantments
 
 Arcanity adds 5 new enchantments that are only obtainable in the Arcane Table.
