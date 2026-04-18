@@ -22,7 +22,9 @@ To obtain an Arcane Table, head to the [Nether](https://minecraft.wiki/w/The_Net
 
 ![Arcane Tool](https://i.imgur.com/B0K3c87.png)
 
-The Arcane Tool is a new item that functions as a weapon, shovel, pickaxe, and axe. This means you can save inventory space by carrying just one tool instead of several. It deals the same amount of damage as a Netherite Sword and mines just as fast as a Netherite Pickaxe.
+The Arcane Tool is a new item that functions as a weapon, shovel, pickaxe, and axe. This means you can save inventory space by carrying just one tool instead of several.
+
+It deals the same amount of damage as a [Netherite Sword](https://minecraft.wiki/w/Netherite_Sword), has the tool level and mining speed of a [Netherite Pickaxe](https://minecraft.wiki/w/Netherite_Pickaxe), and can be repaired with [Emeralds](https://minecraft.wiki/w/Emerald).
 
 To strip wood, scrape oxidized blocks, or till farmland simply right-click on the appropriate blocks. Alternatively, you can create path blocks with the Arcane Tool by shift-right-clicking on dirt blocks.
 
