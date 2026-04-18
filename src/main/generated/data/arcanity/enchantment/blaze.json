@@ -35,6 +35,6 @@
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#arcanity:multi_tool",
+  "supported_items": "#minecraft:enchantable/mining_loot",
   "weight": 2
 }

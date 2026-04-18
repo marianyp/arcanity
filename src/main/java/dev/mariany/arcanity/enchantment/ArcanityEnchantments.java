@@ -77,7 +77,7 @@ public final class ArcanityEnchantments {
                 BLAZE,
                 Enchantment.builder(
                                    Enchantment.definition(
-                                           itemRegistry.getOrThrow(ArcanityTags.Items.MULTI_TOOL),
+                                           itemRegistry.getOrThrow(ItemTags.MINING_LOOT_ENCHANTABLE),
                                            2,
                                            1,
                                            Enchantment.constantCost(30),
