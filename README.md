@@ -26,11 +26,11 @@ The Arcane Tool is a new item that functions as a weapon, shovel, pickaxe, and a
 
 It deals the same amount of damage as a [Netherite Sword](https://minecraft.wiki/w/Netherite_Sword), has the tool level and mining speed of a [Netherite Pickaxe](https://minecraft.wiki/w/Netherite_Pickaxe), and can be repaired with [Emeralds](https://minecraft.wiki/w/Emerald).
 
-To strip wood, scrape oxidized blocks, or till farmland simply right-click on the appropriate blocks. Alternatively, you can create path blocks with the Arcane Tool by shift-right-clicking on dirt blocks.
+To strip wood, scrape oxidized blocks, or till farmland, simply right-click on the appropriate blocks. Alternatively, you can create path blocks with the Arcane Tool by shift-right-clicking on dirt blocks.
 
 ### Obtaining
 
-The Arcane Tool cannot be crafted. Instead, you must give an unenchanted [Netherite](https://minecraft.wiki/w/Netherite) tool to a [Cleric](https://minecraft.wiki/w/Cleric) villager with a level of Apprentice or higher. After throwing the [Netherite](https://minecraft.wiki/w/Netherite) tool on the ground, the [Cleric](https://minecraft.wiki/w/Cleric) will convert it into an Arcane Tool. Alternatively, you can find the Arcane Tool in [End cities](https://minecraft.wiki/w/End_City). 
+The Arcane Tool cannot be crafted. Instead, you must give an unenchanted [Netherite](https://minecraft.wiki/w/Netherite) tool to a [Cleric](https://minecraft.wiki/w/Cleric) villager with a level of Apprentice or higher. After throwing the [Netherite](https://minecraft.wiki/w/Netherite) tool on the ground, the [Cleric](https://minecraft.wiki/w/Cleric) will convert it into an Arcane Tool. Alternatively, you can find the Arcane Tool in [End cities](https://minecraft.wiki/w/End_City).
 
 ## 📙 Enchantments
 
