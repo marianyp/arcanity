@@ -27,9 +27,9 @@ import net.minecraft.registry.tag.ItemTags;
 public final class ArcanityEnchantments {
     public static final RegistryKey<Enchantment> ABUNDANCE = of("abundance");
     public static final RegistryKey<Enchantment> BLAZE = of("blaze");
+    public static final RegistryKey<Enchantment> COLLECT = of("collect");
     public static final RegistryKey<Enchantment> EXCAVATE = of("excavate");
     public static final RegistryKey<Enchantment> VEIN_MINING = of("vein_mining");
-    public static final RegistryKey<Enchantment> COLLECT = of("collect");
 
     private ArcanityEnchantments() {
     }
