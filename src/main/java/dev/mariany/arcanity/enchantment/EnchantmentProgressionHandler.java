@@ -8,7 +8,6 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipData;
@@ -18,6 +17,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.random.Random;
 
 import java.util.*;
 
@@ -171,23 +171,27 @@ public class EnchantmentProgressionHandler {
         }
     }
 
-    public static int handleExperienceCollection(PlayerEntity player, int amount) {
-        if (player instanceof ServerPlayerEntity serverPlayer) {
-            DynamicRegistryManager registryManager = serverPlayer.getRegistryManager();
+    public static int handleExperienceCollection(ServerPlayerEntity player, int amount) {
+        DynamicRegistryManager registryManager = player.getRegistryManager();
+        Random random = player.getRandom();
 
-            for (EquipmentSlot equipmentSlot : EquipmentSlot.VALUES) {
-                ItemStack stack = serverPlayer.getEquippedStack(equipmentSlot);
+        List<EquipmentSlot> slots = new ArrayList<>(EquipmentSlot.VALUES);
+        Collections.shuffle(slots, random::nextLong);
 
-                if (!canAcceptExperience(registryManager, stack)) {
-                    continue;
-                }
+        for (EquipmentSlot equipmentSlot : slots) {
+            ItemStack stack = player.getEquippedStack(equipmentSlot);
 
-                int remainder = progress(serverPlayer, stack, amount);
-
-                if (remainder > 0) {
-                    return handleExperienceCollection(serverPlayer, remainder);
-                }
+            if (!canAcceptExperience(registryManager, stack)) {
+                continue;
             }
+
+            int remainder = progress(player, stack, amount);
+
+            if (remainder > 0) {
+                return handleExperienceCollection(player, remainder);
+            }
+
+            return remainder;
         }
 
         return amount;

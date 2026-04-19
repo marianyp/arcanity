@@ -4,6 +4,7 @@ import com.blamejared.clumps.api.events.ClumpsEvents;
 import dev.mariany.arcanity.Arcanity;
 import dev.mariany.arcanity.enchantment.EnchantmentProgressionHandler;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.server.network.ServerPlayerEntity;
 
 public final class ClumpsCompat {
     private static final String MOD_ID = "clumps";
@@ -12,19 +13,23 @@ public final class ClumpsCompat {
     }
 
     public static void bootstrap() {
-        if (FabricLoader.getInstance().isModLoaded(MOD_ID)) {
-            Arcanity.bootstrapLog("Clumps Mod Compatibility");
+        if (!FabricLoader.getInstance().isModLoaded(MOD_ID)) {
+            return;
+        }
 
-            ClumpsEvents.VALUE_EVENT.register(valueEvent -> {
-                valueEvent.setValue(
+        Arcanity.bootstrapLog("Clumps Mod Compatibility");
+
+        ClumpsEvents.VALUE_EVENT.register(repairEvent -> {
+            if (repairEvent.getPlayer() instanceof ServerPlayerEntity serverPlayer) {
+                repairEvent.setValue(
                         EnchantmentProgressionHandler.handleExperienceCollection(
-                                valueEvent.getPlayer(),
-                                valueEvent.getValue()
+                                serverPlayer,
+                                repairEvent.getValue()
                         )
                 );
+            }
 
-                return null;
-            });
-        }
+            return null;
+        });
     }
 }
