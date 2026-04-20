@@ -1,5 +1,6 @@
 package dev.mariany.arcanity.mixin.accessor;
 
+import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.screen.ForgingScreenHandler;
 import org.spongepowered.asm.mixin.Mixin;
@@ -9,4 +10,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 public interface ForgingScreenHandlerAccessor {
     @Accessor("input")
     Inventory arcanity$input();
+
+    @Accessor("output")
+    CraftingResultInventory arcanity$output();
 }

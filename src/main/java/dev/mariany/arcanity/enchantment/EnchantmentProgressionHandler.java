@@ -58,92 +58,18 @@ public class EnchantmentProgressionHandler {
         }
     }
 
-    public static boolean containsEnchantmentProgress(Inventory inventory) {
-        return inventory.containsAny(EnchantmentProgressionHandler::hasEnchantmentProgress);
+    public static boolean isValidAnvilInput(Inventory input) {
+        ItemStack firstStack = input.getStack(0);
+        ItemStack secondStack = input.getStack(1);
+        return isValidAnvilInput(firstStack, secondStack);
     }
 
-    public static void mergeEnchantmentProgression(ItemStack source, ItemStack target) {
-        EnchantmentProgressionComponent sourceEnchantmentProgressionComponent = source.getOrDefault(
-                ArcanityComponents.ENCHANTMENT_PROGRESSION,
-                EnchantmentProgressionComponent.DEFAULT
-        );
-
-        EnchantmentProgressionComponent targetEnchantmentProgressionComponent = target.getOrDefault(
-                ArcanityComponents.ENCHANTMENT_PROGRESSION,
-                EnchantmentProgressionComponent.DEFAULT
-        );
-
-        Map<RegistryKey<Enchantment>, EnchantmentProgression> mergedEnchantmentProgressionMap =
-                mergeEnchantmentProgression(
-                        sourceEnchantmentProgressionComponent,
-                        targetEnchantmentProgressionComponent
-                );
-
-        if (!mergedEnchantmentProgressionMap.isEmpty()) {
-            target.set(
-                    ArcanityComponents.ENCHANTMENT_PROGRESSION,
-                    new EnchantmentProgressionComponent(mergedEnchantmentProgressionMap, 0)
-            );
-        }
-    }
-
-    private static Map<RegistryKey<Enchantment>, EnchantmentProgression> mergeEnchantmentProgression(
-            EnchantmentProgressionComponent sourceEnchantmentProgressionComponent,
-            EnchantmentProgressionComponent targetEnchantmentProgressionComponent
-    ) {
-        HashMap<RegistryKey<Enchantment>, EnchantmentProgression> targetEnchantmentProgressionMap =
-                new HashMap<>(targetEnchantmentProgressionComponent.enchantments());
-
-        for (
-                Map.Entry<RegistryKey<Enchantment>, EnchantmentProgression> enchantmentProgressionEntry :
-                sourceEnchantmentProgressionComponent.enchantments().entrySet()
-        ) {
-            RegistryKey<Enchantment> enchantmentRegistryKey = enchantmentProgressionEntry.getKey();
-
-            EnchantmentProgression sourceEnchantmentProgression = enchantmentProgressionEntry.getValue();
-
-            EnchantmentProgression targetEnchantmentProgression =
-                    targetEnchantmentProgressionMap.get(enchantmentRegistryKey);
-
-            EnchantmentProgressionState sourceEnchantmentProgressionState = sourceEnchantmentProgression.state();
-
-            int sourceLevel = sourceEnchantmentProgression.level();
-            int sourceEarnedExperience = sourceEnchantmentProgression.earnedExperience();
-            boolean sourceEnabled = sourceEnchantmentProgressionState.isEnabled();
-
-            boolean enabled;
-
-            if (targetEnchantmentProgression != null) {
-                int targetLevel = targetEnchantmentProgression.level();
-                int targetEarnedExperience = targetEnchantmentProgression.earnedExperience();
-
-                if (sourceLevel == targetLevel) {
-                    if (sourceEarnedExperience <= targetEarnedExperience) {
-                        continue;
-                    }
-                } else if (sourceLevel < targetLevel) {
-                    continue;
-                }
-
-                EnchantmentProgressionState targetEnchantmentProgressionState = targetEnchantmentProgression.state();
-                boolean targetEnabled = targetEnchantmentProgressionState.isEnabled();
-
-                enabled = targetEnabled || sourceEnabled;
-            } else {
-                enabled = sourceEnabled;
-            }
-
-            targetEnchantmentProgressionMap.put(
-                    enchantmentRegistryKey,
-                    new EnchantmentProgression(
-                            sourceLevel,
-                            sourceEarnedExperience,
-                            enabled ? EnchantmentProgressionState.ENABLED : sourceEnchantmentProgressionState
-                    )
-            );
+    private static boolean isValidAnvilInput(ItemStack firstStack, ItemStack secondStack) {
+        if (firstStack.isDamageable() && firstStack.canRepairWith(secondStack)) {
+            return true;
         }
 
-        return targetEnchantmentProgressionMap;
+        return !hasEnchantmentProgress(firstStack) && !hasEnchantmentProgress(secondStack);
     }
 
     public static boolean hasEnchantmentProgress(ItemStack stack) {

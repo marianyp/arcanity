@@ -7,16 +7,24 @@ import dev.mariany.arcanity.item.ArcaneToolItem;
 import dev.mariany.arcanity.mixin.accessor.ForgingScreenHandlerAccessor;
 import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.AnvilScreenHandler;
+import net.minecraft.screen.Property;
 import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AnvilScreenHandler.class)
 public class AnvilScreenHandlerMixin {
+    @Final
+    @Shadow
+    private Property levelCost;
+
     @WrapOperation(
             method = "updateResult",
             at = @At(
@@ -24,7 +32,7 @@ public class AnvilScreenHandlerMixin {
                     target = "Lnet/minecraft/item/ItemStack;set(Lnet/minecraft/component/ComponentType;Ljava/lang/Object;)Ljava/lang/Object;"
             )
     )
-    public <T> T wrapItemStackSet(ItemStack stack, ComponentType<T> type, @Nullable T value, Operation<T> original) {
+    public <T> T wrapUpdateResult(ItemStack stack, ComponentType<T> type, @Nullable T value, Operation<T> original) {
         if (stack.getItem() instanceof ArcaneToolItem && type == DataComponentTypes.REPAIR_COST) {
             return original.call(stack, type, 0);
         }
@@ -32,50 +40,21 @@ public class AnvilScreenHandlerMixin {
         return original.call(stack, type, value);
     }
 
-    @WrapOperation(
-            method = "updateResult",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/item/ItemStack;contains(Lnet/minecraft/component/ComponentType;)Z"
-            )
-    )
-    public <T> boolean wrapItemStackContains(
-            ItemStack stack,
-            ComponentType<T> componentType,
-            Operation<Boolean> original
-    ) {
-        if (componentType == DataComponentTypes.STORED_ENCHANTMENTS) {
-            AnvilScreenHandler anvilScreenHandler = (AnvilScreenHandler) (Object) this;
-            Inventory input = ((ForgingScreenHandlerAccessor) anvilScreenHandler).arcanity$input();
-
-            if (EnchantmentProgressionHandler.containsEnchantmentProgress(input)) {
-                return false;
-            }
-        }
-
-        return original.call(stack, componentType);
-    }
-
-    @WrapOperation(
-            method = "updateResult",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/enchantment/EnchantmentHelper;set(Lnet/minecraft/item/ItemStack;Lnet/minecraft/component/type/ItemEnchantmentsComponent;)V"
-            )
-    )
-    public void wrapEnchantmentHelperSet(
-            ItemStack target,
-            ItemEnchantmentsComponent enchantments,
-            Operation<Void> original
-    ) {
+    @Inject(method = "updateResult", at = @At(value = "HEAD"), cancellable = true)
+    public void injectUpdateResult(CallbackInfo ci) {
         AnvilScreenHandler anvilScreenHandler = (AnvilScreenHandler) (Object) this;
 
         Inventory input = ((ForgingScreenHandlerAccessor) anvilScreenHandler).arcanity$input();
 
-        ItemStack source = input.getStack(1);
+        if (EnchantmentProgressionHandler.isValidAnvilInput(input)) {
+            return;
+        }
 
-        EnchantmentProgressionHandler.mergeEnchantmentProgression(source, target);
+        Inventory output = ((ForgingScreenHandlerAccessor) anvilScreenHandler).arcanity$output();
 
-        original.call(target, enchantments);
+        output.setStack(0, ItemStack.EMPTY);
+        this.levelCost.set(0);
+
+        ci.cancel();
     }
 }
